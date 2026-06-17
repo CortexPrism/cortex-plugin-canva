@@ -11,7 +11,16 @@
     "fmt:check": "prettier --check .",
     "lint": "eslint ."
   },
-  "keywords": ["cortex", "plugin", "cortex-plugin", "esm", "canva", "image", "dalle", "stable-diffusion"],
+  "keywords": [
+    "cortex",
+    "plugin",
+    "cortex-plugin",
+    "esm",
+    "canva",
+    "image",
+    "dalle",
+    "stable-diffusion"
+  ],
   "author": "CortexPrism",
   "license": "MIT",
   "repository": {

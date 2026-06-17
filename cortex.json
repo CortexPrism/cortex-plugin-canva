@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-canva",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate social media graphics, presentations, logos, diagrams from natural language",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -17,27 +17,69 @@
       "name": "image_generate",
       "description": "Generate image from prompt",
       "params": [
-        { "name": "prompt", "type": "string", "description": "Prompt describing the image to generate", "required": true },
-        { "name": "style", "type": "enum", "description": "Visual style", "default": "social", "options": ["social", "presentation", "logo", "diagram", "photo", "illustration"] },
-        { "name": "size", "type": "string", "description": "Image dimensions", "default": "1024x1024" },
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Prompt describing the image to generate",
+          "required": true
+        },
+        {
+          "name": "style",
+          "type": "enum",
+          "description": "Visual style",
+          "default": "social",
+          "options": ["social", "presentation", "logo", "diagram", "photo", "illustration"]
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "description": "Image dimensions",
+          "default": "1024x1024"
+        },
         { "name": "count", "type": "number", "description": "Number of images", "default": 1 },
-        { "name": "provider", "type": "enum", "description": "Generation provider", "default": "dalle", "options": ["dalle", "stable_diffusion", "canva"] }
+        {
+          "name": "provider",
+          "type": "enum",
+          "description": "Generation provider",
+          "default": "dalle",
+          "options": ["dalle", "stable_diffusion", "canva"]
+        }
       ]
     },
     {
       "name": "image_edit",
       "description": "Edit existing image",
       "params": [
-        { "name": "image_url", "type": "string", "description": "URL of the image to edit", "required": true },
-        { "name": "prompt", "type": "string", "description": "Edit instructions", "required": true },
-        { "name": "mask_url", "type": "string", "description": "URL of mask image", "required": false }
+        {
+          "name": "image_url",
+          "type": "string",
+          "description": "URL of the image to edit",
+          "required": true
+        },
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Edit instructions",
+          "required": true
+        },
+        {
+          "name": "mask_url",
+          "type": "string",
+          "description": "URL of mask image",
+          "required": false
+        }
       ]
     },
     {
       "name": "image_variations",
       "description": "Generate variations of an image",
       "params": [
-        { "name": "image_url", "type": "string", "description": "URL of the source image", "required": true },
+        {
+          "name": "image_url",
+          "type": "string",
+          "description": "URL of the source image",
+          "required": true
+        },
         { "name": "count", "type": "number", "description": "Number of variations", "default": 3 }
       ]
     },
@@ -45,32 +87,86 @@
       "name": "canva_create_design",
       "description": "Create Canva design from template",
       "params": [
-        { "name": "template_type", "type": "enum", "description": "Type of design template", "options": ["instagram_post", "facebook_post", "presentation", "logo", "flyer", "banner"], "required": true },
+        {
+          "name": "template_type",
+          "type": "enum",
+          "description": "Type of design template",
+          "options": ["instagram_post", "facebook_post", "presentation", "logo", "flyer", "banner"],
+          "required": true
+        },
         { "name": "title", "type": "string", "description": "Design title", "required": true },
-        { "name": "content", "type": "string", "description": "JSON with text/images/colors", "required": true }
+        {
+          "name": "content",
+          "type": "string",
+          "description": "JSON with text/images/colors",
+          "required": true
+        }
       ]
     },
     {
       "name": "canva_list_templates",
       "description": "List available Canva templates",
       "params": [
-        { "name": "category", "type": "string", "description": "Filter by category", "options": ["social_media", "presentations", "marketing"], "required": false }
+        {
+          "name": "category",
+          "type": "string",
+          "description": "Filter by category",
+          "options": ["social_media", "presentations", "marketing"],
+          "required": false
+        }
       ]
     }
   ],
   "ui": {
     "section": "API Keys",
     "fields": [
-      { "key": "openaiApiKey", "label": "OpenAI API Key (DALL-E)", "type": "secret", "description": "OpenAI API key for DALL-E image generation" },
-      { "key": "canvaApiKey", "label": "Canva API Key", "type": "secret", "description": "Canva API key for design creation" },
-      { "key": "stabilityApiKey", "label": "Stability AI Key", "type": "secret", "description": "Stability AI API key for Stable Diffusion" }
+      {
+        "key": "openaiApiKey",
+        "label": "OpenAI API Key (DALL-E)",
+        "type": "secret",
+        "description": "OpenAI API key for DALL-E image generation"
+      },
+      {
+        "key": "canvaApiKey",
+        "label": "Canva API Key",
+        "type": "secret",
+        "description": "Canva API key for design creation"
+      },
+      {
+        "key": "stabilityApiKey",
+        "label": "Stability AI Key",
+        "type": "secret",
+        "description": "Stability AI API key for Stable Diffusion"
+      }
     ]
   },
   "ui:general": {
     "section": "General",
     "fields": [
-      { "key": "defaultProvider", "label": "Default Provider", "type": "select", "description": "Default image generation provider", "default": "dalle", "options": [{ "label": "DALL-E", "value": "dalle" }, { "label": "Stable Diffusion", "value": "stable_diffusion" }, { "label": "Canva", "value": "canva" }] },
-      { "key": "defaultSize", "label": "Default Size", "type": "select", "description": "Default image dimensions", "default": "1024x1024", "options": [{ "label": "Square (1024)", "value": "1024x1024" }, { "label": "Landscape (1792)", "value": "1792x1024" }, { "label": "Portrait (1024)", "value": "1024x1792" }] }
+      {
+        "key": "defaultProvider",
+        "label": "Default Provider",
+        "type": "select",
+        "description": "Default image generation provider",
+        "default": "dalle",
+        "options": [
+          { "label": "DALL-E", "value": "dalle" },
+          { "label": "Stable Diffusion", "value": "stable_diffusion" },
+          { "label": "Canva", "value": "canva" }
+        ]
+      },
+      {
+        "key": "defaultSize",
+        "label": "Default Size",
+        "type": "select",
+        "description": "Default image dimensions",
+        "default": "1024x1024",
+        "options": [
+          { "label": "Square (1024)", "value": "1024x1024" },
+          { "label": "Landscape (1792)", "value": "1792x1024" },
+          { "label": "Portrait (1024)", "value": "1024x1792" }
+        ]
+      }
     ]
   },
   "dependencies": {},
