@@ -301,6 +301,7 @@ const canva_list_templates: Tool = {
 };
 
 export async function onLoad(ctx: PluginContext): Promise<void> {
+  ctx.logger.info(`[cortex-plugin-canva] Loaded`);
   config = await ctx.config.get();
 }
 
