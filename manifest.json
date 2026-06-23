@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-canva",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate social media graphics, presentations, logos, diagrams from natural language",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -27,7 +27,7 @@
           "name": "style",
           "type": "string",
           "description": "Visual style",
-          "default": "social",
+          "defaultValue": "social",
           "enum": [
             "social",
             "presentation",
@@ -41,19 +41,19 @@
           "name": "size",
           "type": "string",
           "description": "Image dimensions",
-          "default": "1024x1024"
+          "defaultValue": "1024x1024"
         },
         {
           "name": "count",
           "type": "number",
           "description": "Number of images",
-          "default": 1
+          "defaultValue": 1
         },
         {
           "name": "provider",
           "type": "string",
           "description": "Generation provider",
-          "default": "dalle",
+          "defaultValue": "dalle",
           "enum": [
             "dalle",
             "stable_diffusion",
@@ -100,7 +100,7 @@
           "name": "count",
           "type": "number",
           "description": "Number of variations",
-          "default": 3
+          "defaultValue": 3
         }
       ]
     },
@@ -187,7 +187,7 @@
             "label": "Default Provider",
             "type": "select",
             "description": "Default image generation provider",
-            "default": "dalle",
+            "defaultValue": "dalle",
             "options": [
               {
                 "label": "DALL-E",
@@ -208,7 +208,7 @@
             "label": "Default Size",
             "type": "select",
             "description": "Default image dimensions",
-            "default": "1024x1024",
+            "defaultValue": "1024x1024",
             "options": [
               {
                 "label": "Square (1024)",
@@ -230,7 +230,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [
